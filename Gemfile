@@ -4,12 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 gem "omniauth-github", "~> 1.3"
-
 gem "omniauth", "~> 1.9"
-
 gem "dotenv-rails", "~> 2.7"
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
-gem "faker", "~> 2.10", :groups => [:development, :test]
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
