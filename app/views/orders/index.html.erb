@@ -40,6 +40,7 @@
       <hr>
       <br>
       <div align="center">
-        <button type="button" class="btn btn-dark"><h3><a href="/orders/new">New Order</a></button>
-        <button type="button" class="btn btn-dark"><h3><a href="/logout">Logout</a></h3></button>
+      
+        <button type="button" class="btn btn-dark"><h3><%= link_to "New Order", new_clerk_order_url(@clerk)%></h3></button>
+        <button type="button" class="btn btn-dark"><h3><%= link_to "logout", logout_path %></h3></button>
       </div>

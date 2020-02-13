@@ -1,0 +1,19 @@
+<%= form_for(order, url: url) do |f| %>
+        <p>
+            <%= f.label :item %>
+            <%= f.text_field :item %>
+        </p>
+            <%= f.label :amount%>
+            <%= f.text_field :amount %>
+        </p>
+        </p>
+            <%= f.label :pick_up%>
+            <%= f.text_field :pick_up, type:"date" %>
+        </p>
+        </p>
+            <%= f.label :patron_id%>
+            <%= f.text_field :patron_id %>
+        </p>
+        <hr><br>
+        <%= f.submit align:"center"%>
+        <% end %>

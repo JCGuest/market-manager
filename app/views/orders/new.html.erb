@@ -1,5 +1,9 @@
-<%= form_for @order do |f| %>
-<%= f.text_field  :item, placeholder: "item"%>
-<%= f.text_field  :amount, placeholder: "amount"%>
-<%= f.text_field  :, placeholder: "item"%>
+<br>
+<br>
 
+<h1 align="center">New Order</h1>
+<hr>
+<br>
+<div class="container">
+<%= render partial: 'form', locals: { order: @order, clerk: @clerk, url: clerk_orders_url } %>
+</div>

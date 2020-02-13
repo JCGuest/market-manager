@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
     helper_method :current_clerk
 
+    def hello
+        redirect_to login_url unless logged_in?
+    end
+
     def logged_in?
         !!current_clerk
     end

@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/auth/:provider/callback' => 'sessions#create'
 
-  root 'orders#index'
+  root 'application#hello'
 
   # resources :orders
   resources :clerks, only: [:new, :create] do
-    resources :orders, only: [:new, :create]
+    resources :orders
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

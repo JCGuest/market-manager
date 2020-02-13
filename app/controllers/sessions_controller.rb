@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
       oauth_email = request.env["omniauth.auth"]["info"]["email"]
       if clerk = Clerk.find_by(email: oauth_email)
         session[:clerk_id] = clerk.id
-        redirect_to root_path
+        redirect_to clerk_orders_path(clerk)
       else
         clerk = Clerk.new(email: oauth_email, password: SecureRandom.hex)
         if clerk.save 
         session[:clerk_id] = clerk.id
-        redirect_to root_path
+        redirect_to clerk_orders_path(clerk)
         else
           render :new
         end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       clerk = Clerk.find_by(email: params[:email])
       if clerk && clerk.authenticate(params[:password])
         session[:clerk_id] = clerk.id
-        redirect_to root_path
+        redirect_to clerk_orders_path(clerk)
       else 
         render 'sessions/new'
       end

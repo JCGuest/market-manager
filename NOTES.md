@@ -16,3 +16,8 @@
 clerk will login and see an index of their orders, ie clerks/:clerk_id/orders
 add complete boolean to orders
 add amount to orders
+
+
+stuff for interview--
+learn more about oauth create action
+path vs url

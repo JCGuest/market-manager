@@ -10,8 +10,22 @@ before_action :set_clerk
         @order = @clerk.orders.build
     end
 
+    def create 
+        # raise params.inspect
+        @order = @clerk.orders.build(order_params)
+        if @order.save 
+            redirect_to clerk_orders_path
+        else
+            render :new 
+        end
+    end
+
 
     private
+    
+    def order_params
+        params.require(:order).permit(:item, :amount, :pick_up, :clerk_id, :patron_id, :complete)
+    end
 
     def set_clerk
         @clerk = Clerk.find_by(id: session[:clerk_id])
