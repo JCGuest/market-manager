@@ -24,7 +24,9 @@ before_action :set_clerk
     private
     
     def order_params
-        params.require(:order).permit(:item, :amount, :pick_up, :clerk_id, :patron_id, :complete)
+        params.require(:order).permit(
+            :item, :amount, :pick_up, :clerk_id, :complete,
+            patron_attributes: [:name, :phone])
     end
 
     def set_clerk

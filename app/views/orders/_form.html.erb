@@ -1,19 +1,17 @@
 <%= form_for(order, url: url) do |f| %>
-        <p>
+    <%= f.fields_for :patron_attributes do |ff| %>
+           <label for="patron_name">Patron Name</label>
+           <%= ff.text_field :name %><br>
+           <label for="patron_phone">Patron Phone Number</label>
+           <%= ff.text_field :phone %><br>
+        <% end %>
             <%= f.label :item %>
-            <%= f.text_field :item %>
-        </p>
+            <%= f.text_field :item %><br>
+
             <%= f.label :amount%>
-            <%= f.text_field :amount %>
-        </p>
-        </p>
+            <%= f.text_field :amount %><br>
             <%= f.label :pick_up%>
-            <%= f.text_field :pick_up, type:"date" %>
-        </p>
-        </p>
-            <%= f.label :patron_id%>
-            <%= f.text_field :patron_id %>
-        </p>
+            <%= f.text_field :pick_up, type:"date" %><br>
         <hr><br>
         <%= f.submit align:"center"%>
         <% end %>

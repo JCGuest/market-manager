@@ -5,5 +5,5 @@
 <hr>
 <br>
 <div class="container">
-<%= render partial: 'form', locals: { order: @order, clerk: @clerk, url: clerk_orders_url } %>
+<%= render partial: 'form', locals: { order: @order, clerk: @clerk, patron: @order.patron, url: clerk_orders_url } %>
 </div>
