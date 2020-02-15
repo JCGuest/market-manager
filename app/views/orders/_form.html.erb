@@ -1,17 +1,36 @@
-<%= form_for(order, url: url) do |f| %>
-    <%= f.fields_for :patron_attributes do |ff| %>
-           <label for="patron_name">Patron Name</label>
-           <%= ff.text_field :name %><br>
-           <label for="patron_phone">Patron Phone Number</label>
-           <%= ff.text_field :phone %><br>
-        <% end %>
-            <%= f.label :item %>
-            <%= f.text_field :item %><br>
+<br>
 
-            <%= f.label :amount%>
-            <%= f.text_field :amount %><br>
-            <%= f.label :pick_up%>
-            <%= f.text_field :pick_up, type:"date" %><br>
-        <hr><br>
-        <%= f.submit align:"center"%>
-        <% end %>
+<%= form_for(order, url: url) do |f| %>
+<%= f.fields_for :patron_attributes do |ff| %>
+
+<table style="width:90%"  align="center" class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Patron Name</th>
+            <th scope="col"> Patron Phone Number</th>
+            <th scope="col">Item</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Pick Up Date</th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr>
+                <th scope="row"><%= ff.text_field :name %><br></th>
+                <td><%= ff.text_field :phone %><br></td>
+                <% end %>
+                <td><%= f.text_field :item %></td>
+                <td><%= f.text_field :amount %></td>
+                <td><%= f.text_field :pick_up, type:"date" %></td>
+            </tr>
+        </tbody>
+</table>   
+                <%= f.submit %>
+                <% end %>    
+<hr>
+        <div align="center">
+            <button type="button" class="btn btn-dark">
+                <h4>
+                    <%= link_to "Back To Orders", clerk_orders_path(@clerk) %>
+                </h4>  
+            </button>
+      </div>

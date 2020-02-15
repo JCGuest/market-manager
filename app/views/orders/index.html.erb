@@ -1,9 +1,8 @@
-<br>
-<br>
 
-<h1 align="center">Welcome, <%=@clerk.email%>.</h1>
-<br>
-<hr>
+<br><br>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:80px; background-color: blue;">
+    <h1 align="center">Welcome, <%=@clerk.email%>.</h1>
+</div>  
 <br>
 <% if flash[:message] %>
     <h3>
@@ -26,7 +25,10 @@
   <% @orders.each do |o|%>
        <tbody>
         <tr>
-          <th scope="row"><%=o.id%></th>
+          <th scope="row"><%=o.id%>
+          <%= link_to "|Open", clerk_order_url(o.clerk, o.id) %>
+          <%= link_to "|Edit", edit_clerk_order_url(o.clerk, o.id) %>
+          </th>
             <td><%=o.patron.name%></td>
             <td><%=o.item%></td>
             <td><%=o.amount%></td>
@@ -36,11 +38,14 @@
         <%end%>
       </tbody>
       </table>
-      <br>
       <hr>
-      <br>
       <div align="center">
       
-        <button type="button" class="btn btn-dark"><h3><%= link_to "New Order", new_clerk_order_url(@clerk)%></h3></button>
-        <button type="button" class="btn btn-dark"><h3><%= link_to "logout", logout_path %></h3></button>
+        <button type="button" class="btn btn-dark">
+          <h3>
+            <%= link_to "New Order", new_clerk_order_url(@clerk)%>
+            <%= link_to "Logout", logout_path %>
+          </h3>
+        </button>
+       
       </div>

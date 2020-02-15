@@ -20,6 +20,26 @@ before_action :set_clerk
         end
     end
 
+    def show 
+        @order = Order.find(params[:id])
+    end
+
+    def edit
+       @order = Order.find(params[:id])
+    end
+
+    def update 
+        @order = Order.find(params[:id])
+        @order.update(order_params)
+        redirect_to clerk_orders_path
+    end
+
+    def destroy 
+        @order = Order.find(params[:id])
+        @order.destroy
+        redirect_to clerk_orders_path
+    end
+
 
     private
     
@@ -27,10 +47,6 @@ before_action :set_clerk
         params.require(:order).permit(
             :item, :amount, :pick_up, :clerk_id, :complete,
             patron_attributes: [:name, :phone])
-    end
-
-    def set_clerk
-        @clerk = Clerk.find_by(id: session[:clerk_id])
     end
 
 end

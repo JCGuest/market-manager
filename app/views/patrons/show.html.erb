@@ -1,0 +1,29 @@
+<br><br>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:80px; background-color: blue;">
+    <h1 align="center">View Patron</h1>
+</div>    
+<br>
+<table style="width:90%"  align="center" class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col"> Phone Number</th>
+            <th scope="col"> Number of Past Orders</th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr>
+                <th scope="row"><%= @patron.name %></th>
+                <td><%=@patron.phone%></td>
+                <td><%=@patron.orders.all.length%></td>
+            </tr>
+        </tbody>
+</table>       
+<hr>
+        <div align="center">
+            <button type="button" class="btn btn-dark">
+                <h4>
+                    <%= link_to "Back To Orders", clerk_orders_path(@clerk) %>
+                </h4>  
+            </button>
+      </div>

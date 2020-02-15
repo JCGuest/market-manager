@@ -1,0 +1,36 @@
+<br><br>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:80px; background-color: blue;">
+    <h1 align="center">Order #<%=@order.id%></h1>
+</div>    
+<br>
+<table style="width:90%"  align="center" class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Number</th>
+            <th scope="col"> Patron Name</th>
+            <th scope="col">Item</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Pick Up Date</th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr>
+                <th scope="row"><%= @order.id %></th>
+                <td><%=@order.patron.name%></td>
+                <td><%=@order.item%></td>
+                <td><%=@order.amount%></td>
+                <td><%=@order.pick_up%></td>
+            </tr>
+        </tbody>
+</table>       
+<hr>
+        <div align="center">
+            <button type="button" class="btn btn-dark">
+                <h4>
+                    <%= link_to "Delete Order", clerk_order_delete_path(@order.clerk, @order), method: :destroy %>
+                    <%= link_to "View Patron", patron_path(@order.patron) %>
+                </h4>  
+            </button>
+      </div>
+   
+  

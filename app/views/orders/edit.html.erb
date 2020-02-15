@@ -1,0 +1,9 @@
+<br><br>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:80px; background-color: blue;">
+    <h1 align="center">Edit Order <%= @order.id %></h1>
+</div> 
+
+<br>
+<div class="container">
+<%= render partial: 'form', locals: { order: @order, clerk: @clerk, patron: @order.patron, url: update_clerk_order_url } %>
+</div>

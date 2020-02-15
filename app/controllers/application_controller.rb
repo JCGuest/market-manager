@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
         @current_clerk ||= Clerk.find(session[:clerk_id]) if session[:clerk_id]
     end
 
+    def set_clerk
+        @clerk = Clerk.find_by(id: session[:clerk_id])
+    end
+
 end
