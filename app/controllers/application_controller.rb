@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
     helper_method :current_clerk
+    helper_method :logged_in?
+    helper_method :redirect_if_logged_in
+
 
     def hello
-        redirect_to login_url if !logged_in?
+        
     end
 
     def logged_in?
@@ -16,5 +19,11 @@ class ApplicationController < ActionController::Base
     def set_clerk
         @clerk = Clerk.find_by(id: session[:clerk_id])
     end
+
+    def redirect_if_not_logged_in
+        if !logged_in?
+          redirect_to login_path
+        end
+      end
 
 end

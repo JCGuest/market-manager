@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
 before_action :set_clerk
 
     def index
-        redirect_to login_path if !logged_in?
-        @orders = @clerk.orders.all 
+        redirect_if_not_logged_in  
+        @orders = @clerk.orders.all
     end
 
     def new
@@ -11,7 +11,6 @@ before_action :set_clerk
     end
 
     def create 
-        # raise params.inspect
         @order = @clerk.orders.build(order_params)
         if @order.save 
             redirect_to clerk_orders_path
@@ -21,10 +20,12 @@ before_action :set_clerk
     end
 
     def show 
+        redirect_if_not_logged_in
         @order = Order.find(params[:id])
     end
 
     def edit
+        redirect_if_not_logged_in
        @order = Order.find(params[:id])
     end
 

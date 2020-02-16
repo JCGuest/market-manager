@@ -2,6 +2,7 @@ class PatronsController < ApplicationController
   before_action :set_clerk
 
   def show
+    redirect_if_not_logged_in
     @patron = Patron.find(params[:id])
   end
 

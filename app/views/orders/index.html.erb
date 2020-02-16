@@ -1,7 +1,7 @@
 
 <br><br>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:80px; background-color: blue;">
-    <h1 align="center">Welcome, <%=@clerk.email%>.</h1>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white;">
+    <h1 align="center" class='display-1'>Welcome, <%=@clerk.email%>.</h1>
 </div>  
 <br>
 <% if flash[:message] %>
@@ -12,7 +12,7 @@
   <h5 align="center">You have no orders</h5>
   <%else%>
   
-<table style="width:90%"  align="center" class="table table-bordered">
+<table style="width:90%; background-color:white"  align="center" class="table table-bordered">
   <thead>   
   <tr>
           <th scope="col">Number</th>
@@ -20,6 +20,8 @@
           <th scope="col">Item</th>
           <th scope="col">Amount</th>
           <th scope="col">Pick Up Date</th>
+          <th scope="col">Completed?</th>
+
     </tr>
   </thead>
   <% @orders.each do |o|%>
@@ -33,6 +35,10 @@
             <td><%=o.item%></td>
             <td><%=o.amount%></td>
             <td><%=o.pick_up%></td>
+            <td>
+            <%=o.complete%>
+            </td>
+
         </tr>
         <%end%>
         <%end%>
@@ -43,8 +49,8 @@
       
         <button type="button" class="btn btn-dark">
           <h3>
-            <%= link_to "New Order", new_clerk_order_url(@clerk)%>
-            <%= link_to "Logout", logout_path %>
+            <%= link_to "New Order", new_clerk_order_url(@clerk)%> |
+            <%= link_to "Logout", logout_path %> |
           </h3>
         </button>
        

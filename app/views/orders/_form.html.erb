@@ -11,6 +11,8 @@
             <th scope="col">Item</th>
             <th scope="col">Amount</th>
             <th scope="col">Pick Up Date</th>
+            <th scope="col">Complete</th>
+
         </tr>
     </thead>
         <tbody>
@@ -21,6 +23,8 @@
                 <td><%= f.text_field :item %></td>
                 <td><%= f.text_field :amount %></td>
                 <td><%= f.text_field :pick_up, type:"date" %></td>
+                <td><%= f.text_field :complete, placeholder:"true/false" %></td>
+
             </tr>
         </tbody>
 </table>   

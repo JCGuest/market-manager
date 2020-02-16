@@ -13,10 +13,11 @@
     
 
 
-clerk will login and see an index of their orders, ie clerks/:clerk_id/orders
-add complete boolean to orders
-add amount to orders
-
+todo--
+add authorization, add flash. add completed check box
+find an asset pipeline to use
+add validations
+error messages
 
 stuff for interview--
 learn more about oauth create action

@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
         session[:clerk_id] = clerk.id
         redirect_to clerk_orders_path(clerk)
         else
+          flash[:message] = "Something went wrong."
           render :new
         end
       end
@@ -24,14 +25,15 @@ class SessionsController < ApplicationController
         session[:clerk_id] = clerk.id
         redirect_to clerk_orders_path(clerk)
       else 
-        render 'sessions/new'
+        flash[:message] = "Email or password invalid."
+        render :new
       end
     end
   end
 
   def destroy
     reset_session
-    redirect_to login_path
+    redirect_to root_path
   end
 
   private

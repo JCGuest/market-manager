@@ -1,9 +1,9 @@
 <br><br>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:80px; background-color: blue;">
-    <h1 align="center">Order #<%=@order.id%></h1>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white;">
+    <h1 align="center" class="display-1">Order #<%=@order.id%></h1>
 </div>    
 <br>
-<table style="width:90%"  align="center" class="table table-bordered">
+<table style="width:90%; background-color:white"  align="center" class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">Number</th>
@@ -11,6 +11,8 @@
             <th scope="col">Item</th>
             <th scope="col">Amount</th>
             <th scope="col">Pick Up Date</th>
+            <th scope="col">Complete</th>
+
         </tr>
     </thead>
         <tbody>
@@ -20,6 +22,8 @@
                 <td><%=@order.item%></td>
                 <td><%=@order.amount%></td>
                 <td><%=@order.pick_up%></td>
+                <td><%=@order.complete%></td>
+
             </tr>
         </tbody>
 </table>       
@@ -27,8 +31,10 @@
         <div align="center">
             <button type="button" class="btn btn-dark">
                 <h4>
-                    <%= link_to "Delete Order", clerk_order_delete_path(@order.clerk, @order), method: :destroy %>
-                    <%= link_to "View Patron", patron_path(@order.patron) %>
+                    <%= link_to "Delete Order", clerk_order_delete_path(@order.clerk, @order), method: :destroy %> |
+                    <%= link_to "View Patron", patron_path(@order.patron) %> |
+                    <%= link_to "Back to your orders", clerk_orders_path(@clerk) %>
+
                 </h4>  
             </button>
       </div>

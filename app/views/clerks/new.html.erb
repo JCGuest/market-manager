@@ -1,6 +1,38 @@
-<h1>Sign Up</h1>
-<%= form_for @clerk do |f| %>
-<%= f.text_field :email, placeholder: "email"%>
-<%= f.text_field :password_digest, placeholder: "password" %>
-<%= f.submit%>
+<div class="container">
+    <h2 class='display-1'>Sign Up</h2>  
+    <p>
+        <h3>
+            <small class="text-muted">Please fill in this form to sign up.</small>
+    <hr>
+        <h3>
+            <small class='text-muted'>
+            <% if !@clerk.errors.full_messages.blank?  %>
+            <%= @clerk.errors.full_messages.each do |message| %>
+            <%= message %>
+            <br>
+            <% end %>
+            <%end %>
+        </h3>
+    <br>
+
+    <%= form_for(@clerk, html: {class: "form-signin"}) do |f| %>
+    <%= f.label :email, class:'sr-only'%>
+    <%= f.text_field :email, class:'form-control', placeholder:'Email Address'%>
+    <br><br>
+    <%= f.label :password, class:'sr-only' %>
+    <%= f.text_field :password, class:'form-control', placeholder:'Password', type: 'password' %>
+    <br><br>
+    <%= f.label :password_confirmation, class:'sr-only' %>
+    <%= f.text_field :password_confirmation, class:'form-control', placeholder:'Confirm Password', type: 'password'  %>
+    <hr>
+    <br>
+    <%= f.submit%>
+</div>
+<div class="container signin">
+        <p>
+          <h4>
+            <small class="text-muted">Already have an account? <%= link_to "Log in", login_path %>.<small>
+          <h4>
+        </p>
+</div>
 <% end %>
