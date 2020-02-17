@@ -4,10 +4,7 @@
     <h1 align="center" class='display-1'>Welcome, <%=@clerk.email%>.</h1>
 </div>  
 <br>
-<% if flash[:message] %>
-    <h3>
-    <small class="text-muted"><%=flash[:message]%></small></h3></p>
-    <%end%>
+
   <%if @orders.empty?%>
   <h5 align="center">You have no orders</h5>
   <%else%>

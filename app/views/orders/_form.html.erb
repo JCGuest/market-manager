@@ -1,4 +1,21 @@
 <br>
+<h3>
+            <small class='text-muted'>
+            <% if !@order.errors.full_messages.blank?  %>
+            <% @order.errors.full_messages.each do |message| %>
+            Order <%=message %>
+            <br>
+            <% end %>
+            <%end %>
+
+            
+            <% if @patron && !@patron.errors.full_messages.blank?  %>
+            <% @patron.errors.full_messages.each do |message| %>
+            Patron <%= message %>
+            <br>
+            <% end %>
+            <%end %>
+        </h3>
 
 <%= form_for(order, url: url) do |f| %>
 <%= f.fields_for :patron_attributes do |ff| %>

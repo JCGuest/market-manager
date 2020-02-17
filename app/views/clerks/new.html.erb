@@ -7,7 +7,7 @@
         <h3>
             <small class='text-muted'>
             <% if !@clerk.errors.full_messages.blank?  %>
-            <%= @clerk.errors.full_messages.each do |message| %>
+            <% @clerk.errors.full_messages.each do |message| %>
             <%= message %>
             <br>
             <% end %>

@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
         session[:clerk_id] = clerk.id
         redirect_to clerk_orders_path(clerk)
       else 
-        flash[:message] = "Email or password invalid."
+        flash[:message] = "Email or Password invalid."
         render :new
       end
     end

@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_clerk
     helper_method :logged_in?
-    helper_method :redirect_if_logged_in
-
 
     def hello
         

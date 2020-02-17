@@ -12,9 +12,11 @@ before_action :set_clerk
 
     def create 
         @order = @clerk.orders.build(order_params)
-        if @order.save 
+        @patron = Patron.new(params[:patron_attributes])
+        if @order.save
             redirect_to clerk_orders_path
         else
+            @patron.valid?
             render :new 
         end
     end
