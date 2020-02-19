@@ -1,10 +1,9 @@
 <br><br>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white;">
-    <h2 align="center" class="display-2">Order #<%=@order.id%></h2>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white; margin:0 auto; width:90%;">
+    <h1 align="center" class="display-1">Order #<%=@order.id%></h1>
 </div>    
 <br>
 <table style="width:90%; background-color:white"  align="center" class="table table-bordered">
-
     <thead>
         <tr>
             <th scope="col">Number</th>
@@ -32,9 +31,10 @@
         <div align="center">
             <button type="button" class="btn btn-dark">
                 <h4>
-                    <%= link_to "Delete Order", clerk_order_delete_path(@order.clerk, @order), method: :destroy %> |
+                    <%= link_to "Edit", edit_clerk_order_url(@order.clerk, @order.id) %> |
+                    <%= link_to "Delete", clerk_order_delete_path(@order.clerk, @order), method: :destroy %> |
                     <%= link_to "View Patron", patron_path(@order.patron) %> |
-                    <%= link_to "Back to your orders", clerk_orders_path(@clerk) %>
+                    <%= link_to "Your Orders", clerk_orders_path(@clerk) %>
 
                 </h4>  
             </button>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root 'application#hello'
 
-  resources :patrons, only: [:show] do
+  resources :patrons, only: [:show, :edit, :update, :destroy] do
     resources :orders, only:[:show]
   end
 
@@ -16,4 +16,7 @@ Rails.application.routes.draw do
 
   post '/clerks/:clerk_id/orders/:id/delete', to: 'orders#destroy', as: 'clerk_order_delete'
   patch '/clerks/:clerk_id/orders/:id/update', to: 'orders#update', as: 'update_clerk_order'
+  patch 'patrons/:patron_id/update', to: 'patrons#update', as: 'update_patron'
+  get 'patron/:patron_id/delete', to: 'patrons#destroy', as: 'delete_patron'
+  # get "/clerks/:clerk_id/orders/:order_id/update", to: 'orders#index'
 end

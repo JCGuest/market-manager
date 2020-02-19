@@ -1,0 +1,44 @@
+<br><br>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; background-color: white; margin:0 auto; width:90%;">
+    <h2 align="center">Edit Patron <%= @patron.id %></h2>
+</div> 
+
+<br>
+<br>
+<h3>
+            <small class='text-muted'>
+            <% if !@patron.errors.full_messages.blank?  %>
+            <% @patron.errors.full_messages.each do |message| %>
+            <%= message %>
+            <br>
+            <% end %>
+            <%end %>
+</h3>
+
+<%= form_for(@patron, url: update_patron_url(@patron)) do |f| %>
+<table style="width:90%; background-color: white"  align="center" class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+
+        </tr>
+    </thead>
+        <tbody>
+            <tr>
+                <td><%= f.text_field :name %></td>
+                <td><%= f.text_field :phone %></td>
+
+            </tr>
+        </tbody>
+</table>   
+                <%= f.submit %>
+                <% end %>   
+<hr>
+        <div align="center">
+            <button type="button" class="btn btn-dark">
+                <h4>
+                    <%= link_to "Back To Orders", clerk_orders_path(@clerk) %>
+                </h4>  
+            </button>
+      </div>

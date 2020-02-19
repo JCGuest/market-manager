@@ -1,8 +1,11 @@
 
 <br><br>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white;">
-    <h2 align="center" class='display-2'>Welcome, <%=@clerk.email%>.</h2>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; background-color: white; margin:0 auto; width:90%;">
+    <h2 align="center">Welcome, <%=@clerk.email%></h2>
+    
+
 </div>  
+<br>
 <h3>
       <small class='text-muted'>
       <%if @orders.empty?%>
@@ -23,6 +26,7 @@
       <% end %>
 </h3>
   
+  
 <table style="width:90%; background-color:white"  align="center" class="table table-bordered">
   <thead>   
   <tr>
@@ -35,18 +39,19 @@
 
     </tr>
   </thead>
-  <% @orders.reverse.each do |o|%>
+  <% @orders.each do |o|%>
        <tbody>
         <tr>
           <th scope="row"><%=o.id%>
-          <%= link_to "|Open", clerk_order_url(o.clerk, o.id) %>
-          <%= link_to "|Edit", edit_clerk_order_url(o.clerk, o.id) %>
+          <%= link_to "|Options", clerk_order_url(o.clerk, o.id) %>
           </th>
             <td><%=o.patron.name%></td>
             <td><%=o.item%></td>
             <td><%=o.amount%></td>
             <td><%=o.pick_up%></td>
-            <td><%=o.complete %></td>
+            <td>
+            <%=o.complete%>
+            </td>
 
         </tr>
         <%end%>
@@ -57,12 +62,10 @@
       <div align="center">
       
         <button type="button" class="btn btn-dark">
-          <h3>
+          <h4>
             <%= link_to "New Order", new_clerk_order_url(@clerk)%> |
-            <%= link_to "Logout", logout_path %> |
-          </h3>
+            <%= link_to "Logout", logout_path %>
+          </h4>
         </button>
        
       </div>
-
-      

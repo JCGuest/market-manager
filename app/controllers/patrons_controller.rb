@@ -6,9 +6,31 @@ class PatronsController < ApplicationController
     @patron = Patron.find(params[:id])
   end
 
-  def destroy
+  def edit
     @patron = Patron.find(params[:id])
+  end
+
+  def update
+    # raise params.inspect
+    @patron = Patron.find(params[:patron_id])
+      if @patron.valid?
+          @patron.update(patron_params)
+          redirect_to clerk_orders_path(current_clerk)
+      else
+          render :edit
+      end
+  end
+
+  def destroy
+    @patron = Patron.find(params[:patron_id])
+    @patron.orders.destroy_all
     @patron.destroy
     redirect_to clerk_orders_path(@clerk)
+  end
+
+  private
+
+  def patron_params
+    params.require(:patron).permit(:name, :phone)
   end
 end

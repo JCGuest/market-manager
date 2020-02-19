@@ -1,12 +1,11 @@
-<br><br>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white;">
-    <h2 align="center" class='display-2'>View Patron</h2>
-</div>    
-<br>
+<div  class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; width:90%; background-color: white; margin: 0 auto; margin:0 auto; width:90%;">
+    <h2 align="center"><%= @patron.name %>'s Info</h2>
+</div>   
+<br>  
 <table style="width:90%; background-color:white"  align="center" class="table table-bordered">
     <thead>
         <tr>
-            <th scope="col">Name</th>
+            <th scope="col"> Name</th>
             <th scope="col"> Phone Number</th>
             <th scope="col"> Number of Past Orders</th>
         </tr>
@@ -18,12 +17,46 @@
                 <td><%=@patron.orders.all.length%></td>
             </tr>
         </tbody>
-</table>       
+</table>  
+<br>
+<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; background-color: white; margin:0 auto; width:90%;">
+    <h2 align="center"><%= @patron.name %>'s Orders</h2>
+</div>   
+<br>  
+
+<table style="width:90%; background-color:white"  align="center" class="table table-bordered">
+  <thead>   
+  <tr>
+          <th scope="col">Number</th>
+          <th scope="col">Item</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Pick Up Date</th>
+          <th scope="col">Completed?</th>
+
+    </tr>
+  </thead>
+  <% @patron.orders.each do |o|%>
+       <tbody>
+        <tr>
+          <th scope="row"><%=o.id%>
+          </th>
+            <td><%=o.item%></td>
+            <td><%=o.amount%></td>
+            <td><%=o.pick_up%></td>
+            <td><%=o.complete%></td>
+
+        </tr>
+        <%end%>
+      </tbody>
+      </table> 
 <hr>
         <div align="center">
             <button type="button" class="btn btn-dark">
                 <h4>
-                    <%= link_to "Back To Orders", clerk_orders_path(@clerk) %>
+                    <%= link_to "Back To Orders", clerk_orders_path(@clerk) %> |
+                    <%= link_to  "Edit Patron", edit_patron_path(@patron)%> |
+                    <%= link_to  "Delete Patron", delete_patron_path(@patron)%>
+
                 </h4>  
             </button>
       </div>

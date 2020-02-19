@@ -18,9 +18,9 @@
         </h3>
 
 <%= form_for(order, url: url) do |f| %>
-<%= f.fields_for patron do |ff| %>
+<%= f.fields_for patron, Patron.new do |ff| %>
 
-<table style="width:90%"  align="center" class="table table-bordered">
+<table style="width:90%; background-color: white"  align="center" class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">Patron Name</th>
@@ -34,19 +34,23 @@
     </thead>
         <tbody>
             <tr>
-                <th scope="row"><%= ff.text_field :name %></th>
-                <td><%= ff.text_field :phone %></td>
+                <th scope="row">
+                <%= ff.text_field :name %>    
+                    <br>or<br>
+                <%=f.collection_select :patron_id, Patron.all, :id, :name, prompt: "Select One"%>
+                </th>
+                <td><%= ff.text_field :phone %><br></td>
                 <td><%= f.text_field :item %></td>
                 <td><%= f.text_field :amount %></td>
                 <td><%= f.text_field :pick_up, type:"date" %></td>
-                <td><%= f.text_field :complete %></td>
-
+                <td><%= f.select :complete, options_for_select([["no", "false"], ["yes", "true"]])%></td>
+                
             </tr>
         </tbody>
 </table>   
                 <%= f.submit %>
-                <% end %>
-                <% end %>    
+                <% end %>   
+                <%end %> 
 <hr>
         <div align="center">
             <button type="button" class="btn btn-dark">
@@ -55,4 +59,3 @@
                 </h4>  
             </button>
       </div>
-
