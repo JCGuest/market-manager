@@ -18,7 +18,10 @@ add authorization, add flash. add completed check box
 find an asset pipeline to use
 add validations
 error messages
+patron select
 
 stuff for interview--
 learn more about oauth create action
 path vs url
+
+/PROJECTS/

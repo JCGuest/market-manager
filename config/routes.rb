@@ -16,5 +16,4 @@ Rails.application.routes.draw do
 
   post '/clerks/:clerk_id/orders/:id/delete', to: 'orders#destroy', as: 'clerk_order_delete'
   patch '/clerks/:clerk_id/orders/:id/update', to: 'orders#update', as: 'update_clerk_order'
-
 end

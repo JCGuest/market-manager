@@ -11,12 +11,13 @@ before_action :set_clerk
     end
 
     def create 
+        # raise params.inspect
         @order = @clerk.orders.build(order_params)
-        @patron = Patron.new(params[:patron_attributes])
+        # @patron = Patron.new(params[:patron_attributes])
         if @order.save
             redirect_to clerk_orders_path
         else
-            @patron.valid?
+            @order.patron.valid?
             render :new 
         end
     end
@@ -28,7 +29,9 @@ before_action :set_clerk
 
     def edit
         redirect_if_not_logged_in
-       @order = Order.find(params[:id])
+        @order = @clerk.orders.find_by(id: params[:id])  
+        redirect_to clerk_orders_path(clerk), flash[:message] = "Order not found." if @order.nil?
+        @patron = @order.patron
     end
 
     def update 

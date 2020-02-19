@@ -1,13 +1,27 @@
 
 <br><br>
 <div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white;">
-    <h1 align="center" class='display-1'>Welcome, <%=@clerk.email%>.</h1>
+    <h2 align="center" class='display-2'>Welcome, <%=@clerk.email%>.</h2>
 </div>  
-<br>
+<h3>
+      <small class='text-muted'>
+      <%if @orders.empty?%>
+      <h5 align="center">You have no orders</h5>
+      <%else%>
 
-  <%if @orders.empty?%>
-  <h5 align="center">You have no orders</h5>
-  <%else%>
+      <% if @order && !@order.errors.full_messages.blank?  %>
+      <% @order.errors.full_messages.each do |message| %>
+      Order<%= message %>
+      <br>
+        <% end %>
+      <%end %>
+
+      <small class="text-muted">
+      <% if flash[:message] %>
+      <%= flash[:message] %>
+      <br>
+      <% end %>
+</h3>
   
 <table style="width:90%; background-color:white"  align="center" class="table table-bordered">
   <thead>   
@@ -21,7 +35,7 @@
 
     </tr>
   </thead>
-  <% @orders.each do |o|%>
+  <% @orders.reverse.each do |o|%>
        <tbody>
         <tr>
           <th scope="row"><%=o.id%>
@@ -32,9 +46,7 @@
             <td><%=o.item%></td>
             <td><%=o.amount%></td>
             <td><%=o.pick_up%></td>
-            <td>
-            <%=o.complete%>
-            </td>
+            <td><%=o.complete %></td>
 
         </tr>
         <%end%>
@@ -52,3 +64,5 @@
         </button>
        
       </div>
+
+      

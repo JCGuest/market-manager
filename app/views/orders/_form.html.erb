@@ -3,7 +3,7 @@
             <small class='text-muted'>
             <% if !@order.errors.full_messages.blank?  %>
             <% @order.errors.full_messages.each do |message| %>
-            Order <%=message %>
+            <%=message %>
             <br>
             <% end %>
             <%end %>
@@ -18,7 +18,7 @@
         </h3>
 
 <%= form_for(order, url: url) do |f| %>
-<%= f.fields_for :patron_attributes do |ff| %>
+<%= f.fields_for patron do |ff| %>
 
 <table style="width:90%"  align="center" class="table table-bordered">
     <thead>
@@ -28,24 +28,24 @@
             <th scope="col">Item</th>
             <th scope="col">Amount</th>
             <th scope="col">Pick Up Date</th>
-            <th scope="col">Complete</th>
+            <th scope="col">Completed?</th>
 
         </tr>
     </thead>
         <tbody>
             <tr>
-                <th scope="row"><%= ff.text_field :name %><br></th>
-                <td><%= ff.text_field :phone %><br></td>
-                <% end %>
+                <th scope="row"><%= ff.text_field :name %></th>
+                <td><%= ff.text_field :phone %></td>
                 <td><%= f.text_field :item %></td>
                 <td><%= f.text_field :amount %></td>
                 <td><%= f.text_field :pick_up, type:"date" %></td>
-                <td><%= f.text_field :complete, placeholder:"true/false" %></td>
+                <td><%= f.text_field :complete %></td>
 
             </tr>
         </tbody>
 </table>   
                 <%= f.submit %>
+                <% end %>
                 <% end %>    
 <hr>
         <div align="center">
@@ -55,3 +55,4 @@
                 </h4>  
             </button>
       </div>
+
