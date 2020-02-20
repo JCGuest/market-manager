@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
             if @order.save
                 redirect_to clerk_orders_path
             else
-    
                 render :new 
             end
         end
@@ -30,6 +29,22 @@ class OrdersController < ApplicationController
            @order = Order.find(params[:id])
         end
     
+        # def update 
+        #     if @order = Order.find(params[:id])
+        #        order = @clerk.orders.build[order_params]
+        #         if @order.valid?
+        #             @order.update(order_params)
+        #             redirect_to clerk_orders_path
+        #         else
+        #             @order.valid?
+        #             render :edit
+        #         end
+        #     else
+        #         flash[:message] = "Order not found"
+        #         render :edit        
+        #     end
+        # end
+
         def update 
             @order = Order.find(params[:id])
             if @order.valid?
@@ -52,11 +67,8 @@ class OrdersController < ApplicationController
         
         def order_params
             params.require(:order).permit(
-                :item, :amount, :pick_up, :clerk_id, :complete, :patron_id,
+                :item, :amount, :pick_up, :clerk_id, :complete, :patron_id, 
                 patron_attributes: [:name, :phone])
         end
-    
-        # def post_params
-        #     params.require(:post).permit(:title, :content, category_ids:[], categories_attributes: [:name])
-        #   end
+
     end

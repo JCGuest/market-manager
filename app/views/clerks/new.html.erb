@@ -3,7 +3,7 @@
         <h3>
             <small class="text-muted">Please fill in this form to sign up.</small>
             <small class="text-muted">Or <%= link_to "login with GitHub.", '/auth/github' %></small></h3>
-
+<div style="width: 40%;">
     <hr>
         <h3>
             <small class='text-muted'>
@@ -15,7 +15,6 @@
             <%end %>
         </h3>
     <br>
-
     <%= form_for(@clerk, html: {class: "form-signin"}) do |f| %>
     <%= f.label :email, class:'sr-only'%>
     <%= f.text_field :email, class:'form-control', placeholder:'Email Address'%>
@@ -28,6 +27,7 @@
     <hr>
     <br>
     <%= f.submit%>
+</div>
 </div>
 <div class="container signin">
         <p>

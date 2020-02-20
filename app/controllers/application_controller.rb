@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
 
     def hello
-        
+        if logged_in?
+            redirect_to clerk_orders_path(current_clerk)
+        end
     end
 
     def logged_in?

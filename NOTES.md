@@ -19,6 +19,8 @@ find an asset pipeline to use
 add validations
 error messages
 patron select
+sessions new fields for, passing clerk instance 
+
 
 stuff for interview--
 learn more about oauth create action

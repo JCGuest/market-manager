@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
-  post '/sessions', to: 'sessions#create'
+  post '/sessions', to: 'sessions#create', as: "sessions"
   get '/logout', to: 'sessions#destroy'
   get '/auth/:provider/callback' => 'sessions#create'
-
+  get '/sessions', to: 'sessions#new'
+  get 'clerks', to: 'clerks#new'
   root 'application#hello'
 
   resources :patrons, only: [:show, :edit, :update, :destroy] do

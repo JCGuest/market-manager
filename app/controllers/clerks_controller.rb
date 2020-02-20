@@ -10,6 +10,7 @@ def create
         session[:clerk_id] = @clerk.id
         redirect_to clerk_orders_path(@clerk)
     else
+        @clerk.valid?
         render :new
     end
 end

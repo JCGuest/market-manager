@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @clerk = Clerk.new
   end
 
   def create
@@ -20,11 +21,14 @@ class SessionsController < ApplicationController
         end
       end
     else
-      clerk = Clerk.find_by(email: params[:email])
-      if clerk && clerk.authenticate(params[:password])
-        session[:clerk_id] = clerk.id
-        redirect_to clerk_orders_path(clerk)
+      @clerk = Clerk.find_by(email: params[:email])
+      if @clerk && @clerk.authenticate(params[:password])
+        session[:clerk_id] = @clerk.id
+        redirect_to clerk_orders_path(@clerk)
       else 
+        @clerk = Clerk.new(clerk_params)
+        @clerk.valid?
+        # raise params.inspect
         flash[:message] = "Email or Password invalid."
         render :new
       end
@@ -41,5 +45,9 @@ class SessionsController < ApplicationController
   def login_and_redirect_to_root
     session[:clerk_id] = clerk.id
     redirect_to root_path
+  end
+
+  def clerk_params
+      params.require(:clerk).permit(:email, :password, :title, :password_confirmation)
   end
 end
