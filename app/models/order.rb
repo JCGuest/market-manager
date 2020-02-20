@@ -8,30 +8,18 @@ class Order < ApplicationRecord
     validates :amount, presence: true 
     validates :complete, inclusion: { in: [true, false],
     message: "status must be either *true or *false." }
+    scope :due, ->(time) { where("pick_up = ?", time) }
+
+    validate :pick_up_is_future_date
+    def pick_up_is_future_date
+      if pick_up.present? && pick_up < Date.today
+        errors.add(:pick_up, " date can't be in the past")
+      end
+    end
 
     def patron_attributes=(patron_attributes)
         self.patron = Patron.find_or_create_by(patron_attributes) unless patron_attributes[:name].blank?
     end
 
-    end
-        
-    # def categories_attributes=(category_attributes)
-    #     category_attributes.values.each do |category_attribute|
-    #       if category_attribute["name"].present?
-    #         category = Category.find_or_create_by(category_attribute)
-    #         self.categories << category
-    #       end
-    #     end
-    #   end
-
-
-
-    # def patron_attributes=(patron_attributes)
-    #     patron_attributes.values.each do |attribute|
-    #         if attribute["name"].present?
-    #             patron = Patron.find_or_create_by(attribute)
-    #             self.patron << patron
-    #         end
-    #     end
-    # end
+end
         

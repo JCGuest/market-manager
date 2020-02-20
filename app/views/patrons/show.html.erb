@@ -1,8 +1,8 @@
 <br><br>
 <div  class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; width:90%; background-color: white; margin: 0 auto; margin:0 auto; width:70%;">
     <h2 align="center"><%= @patron.name %>'s Info</h2>
-</div>   
-<br>  
+</div>    
+<small class="text-muted">
 <table style="width:70%; background-color:white"  align="center" class="table table-bordered">
     <thead>
         <tr>
@@ -18,23 +18,23 @@
                 <td><%=@patron.orders.all.length%></td>
             </tr>
         </tbody>
-</table>  
+</table>
+</small>  
 <br>
 <div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; background-color: white; margin:0 auto; width:70%;">
     <h2 align="center"><%= @patron.name %>'s Orders</h2>
-</div>   
-<br>  
-
+</div>    
+<small class="text-muted">
 <table style="width:70%; background-color:white"  align="center" class="table table-bordered">
   <thead>   
-  <tr>
+        <tr>
           <th scope="col">Number</th>
           <th scope="col">Item</th>
           <th scope="col">Amount</th>
           <th scope="col">Pick Up Date</th>
           <th scope="col">Completed?</th>
 
-    </tr>
+        </tr>
   </thead>
   <% @patron.orders.each do |o|%>
        <tbody>
@@ -49,7 +49,8 @@
         </tr>
         <%end%>
       </tbody>
-      </table> 
+    </table> 
+</small>
 <hr>
         <div align="center">
             <button type="button" class="btn btn-dark">

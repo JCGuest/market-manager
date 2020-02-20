@@ -6,6 +6,7 @@ end
 
 def create
     @clerk = Clerk.new(clerk_params)
+    
     if @clerk.save 
         session[:clerk_id] = @clerk.id
         redirect_to clerk_orders_path(@clerk)

@@ -2,7 +2,7 @@
 <div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:60px; background-color: white; margin:0 auto; width:70%;">
     <h2 align="center" >New Order</h2>
 </div> 
-<div style="width:72%; margin:0 auto;">
+<div style="width:70%; margin:0 auto;">
     <h3>
         <small class='text-muted'>
         <%if !flash[:message].blank? %>
@@ -25,9 +25,6 @@
         <%end %>
     </h3>
 </div>
-
-
-<br>
 
 <%= render partial: 'form', locals: { order: @order, clerk: @clerk, patron:(:patron_attributes), patrons: Patron.all.reverse, url: clerk_orders_url } %>
 

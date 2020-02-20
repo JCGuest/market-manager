@@ -1,11 +1,11 @@
 <br><br>
 <div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; background-color: white; margin:0 auto; width:70%;">
-    <h2 align="center">Welcome, <%=@clerk.email%></h2>
+    <h2 align="center">Your orders for <%=Date.today.strftime("%m/%d/%Y")%></h2>
 </div> 
-<small class="text-muted">
+<small class="text-muted">  
 <table style="width:70%; background-color:white"  align="center" class="table table-bordered">
   <thead>   
-    <tr>
+  <tr>
           <th scope="col">Number</th>
           <th scope="col"> Customer Name</th>
           <th scope="col">Item</th>
@@ -16,32 +16,30 @@
     </tr>
   </thead>
   <% @orders.each do |o|%>
-   <tbody>
-      <tr>
-        <th scope="row"><%=o.id%>
-            <%= link_to "|Options", clerk_order_url(o.clerk, o.id) %>
-        </th>
+       <tbody>
+        <tr>
+          <th scope="row"><%=o.id%>
+          <%= link_to "|Options", clerk_order_url(o.clerk, o.id) %>
+          </th>
             <td><%=o.patron.name%></td>
             <td><%=o.item%></td>
             <td><%=o.amount%></td>
             <td><%=o.pick_up%></td>
-            <td>
-            <%=o.complete%>
-            </td>
-      </tr>
+            <td><%=o.complete%></td>
+
+        </tr>
         <%end%>
-  </tbody>
+    </tbody>
 </table>
 </small>
-      <hr>
+<hr>
       <div align="center">
       
         <button type="button" class="btn btn-dark">
           <h4>
-            <%= link_to "Today's Orders", clerk_orders_today_path(@clerk) %> |
+            <%= link_to "Your Orders", clerk_orders_url(@clerk) %> |
             <%= link_to "New Order", new_clerk_order_url(@clerk)%> |
             <%= link_to "Logout", logout_path %>
           </h4>
         </button>
-       
-      </div>
+       </div>

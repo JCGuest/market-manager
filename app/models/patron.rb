@@ -3,5 +3,6 @@ class Patron < ApplicationRecord
     has_many :clerks, through: :orders
 
     validates :name, presence: true
-    validates :phone, presence: true, length: { minimum: 7 }
+    validates :phone, presence: true, numericality: true, length: { minimum: 7 }
+
 end

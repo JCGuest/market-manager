@@ -21,36 +21,23 @@ class OrdersController < ApplicationController
     
         def show 
             redirect_if_not_logged_in
-            @order = Order.find(params[:id])
+            @order = @clerk.orders.find(params[:id])
         end
     
         def edit
             redirect_if_not_logged_in
-           @order = Order.find(params[:id])
-        end
-    
-        # def update 
-        #     if @order = Order.find(params[:id])
-        #        order = @clerk.orders.build[order_params]
-        #         if @order.valid?
-        #             @order.update(order_params)
-        #             redirect_to clerk_orders_path
-        #         else
-        #             @order.valid?
-        #             render :edit
-        #         end
-        #     else
-        #         flash[:message] = "Order not found"
-        #         render :edit        
-        #     end
-        # end
+            @order = @clerk.orders.find(params[:id])
+        end   
+
 
         def update 
             @order = Order.find(params[:id])
-            if @order.valid?
+            update = @clerk.orders.build(order_params)
+            if update.valid?
                 @order.update(order_params)
-                redirect_to clerk_orders_path
+               redirect_to clerk_orders_path
             else
+                 @order = @clerk.orders.new(order_params)
                 @order.valid?
                 render :edit
             end
@@ -60,6 +47,11 @@ class OrdersController < ApplicationController
             @order = Order.find(params[:id])
             @order.destroy
             redirect_to clerk_orders_path
+        end
+
+        def today
+            redirect_if_not_logged_in
+            @orders = Order.due(Date.today)
         end
     
     

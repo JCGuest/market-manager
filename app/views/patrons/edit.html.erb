@@ -6,13 +6,13 @@
 <br>
 <br>
 <h3>
-            <small class='text-muted'>
-            <% if !@patron.errors.full_messages.blank?  %>
-            <% @patron.errors.full_messages.each do |message| %>
-            <%= message %>
-            <br>
-            <% end %>
-            <%end %>
+    <small class='text-muted'>
+    <% if !@patron.errors.full_messages.blank?  %>
+    <% @patron.errors.full_messages.each do |message| %>
+    <%= message %>
+    <br>
+    <% end %>
+    <%end %>
 </h3>
 
 <div style="width:50%; margin:0 auto;">

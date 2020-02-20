@@ -1,8 +1,12 @@
 <br><br>
 <div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:110px; background-color: white; margin:0 auto; width:70%;">
-    <h1 align="center" class="display-1">Order #<%=@order.id%></h1>
+    <h2 align="center" class="display-2">Order #<%=@order.id%></h2>
 </div>    
-<br>
+
+<small class="text-muted">
+<% if flash[:message] %>
+<%= flash[:message] %>
+<% end %>
 <table style="width:70%; background-color:white"  align="center" class="table table-bordered">
     <thead>
         <tr>
@@ -26,7 +30,8 @@
 
             </tr>
         </tbody>
-</table>       
+</table> 
+</small>      
 <hr>
         <div align="center">
             <button type="button" class="btn btn-dark">

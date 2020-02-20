@@ -5,31 +5,32 @@
             <small class="text-muted">Please fill in this form to log in.</small>
             <small class="text-muted">Or <%= link_to "login with GitHub.", '/auth/github' %></small></h3></p>
  <div style="width:40%;">
-        <hr>
-            <h3>
-                <small class="text-muted">
-                    <% if flash[:message]  %>
-                    <%= flash[:message] %>
-                    <%end %>
-            </h3>
-        <br>
+<hr>
+       <h3>
+<small class="text-muted">
+            <% if flash[:message]  %>
+            <%= flash[:message] %>
+            <%end %>
+        </h3>
+<br>
  <%= form_for(@clerk, url: sessions_url, html: {class: "form-signin"}) do |f| %>
      <%= f.label :email, class:'sr-only'%>
-    <%= f.text_field :email, class:'form-control', placeholder:'Email Address'%>
-    <br><br>
+    <%= f.text_field :email, class:'form-control', placeholder:'Email Address'%> 
+<br><br>
     <%= f.label :password, class:'sr-only' %>
     <%= f.text_field :password, class:'form-control', placeholder:'Password', type: 'password' %>
       
-      <hr>
-      <br>
+<hr>
+<br>
       <%= f.submit value="Login" %>
-    </div>
-     <br>
+  </div>
+<br>
       <div class="container signin">
         <p>
           <h4>
-            <small class="text-muted">Don't have an account? <%= link_to "Sign up", new_clerk_path %>.<small><h4></p>
-    </div>
+<small class="text-muted">Don't have an account? <%= link_to "Sign up", new_clerk_path %>.<small><h4>
+        </p>
+      </div>
     
 <% end %>
 </div>
