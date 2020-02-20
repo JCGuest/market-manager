@@ -11,7 +11,6 @@ class PatronsController < ApplicationController
   end
 
   def update
-    # raise params.inspect
     @patron = Patron.find(params[:patron_id])
       if @patron.valid?
           @patron.update(patron_params)
@@ -33,4 +32,5 @@ class PatronsController < ApplicationController
   def patron_params
     params.require(:patron).permit(:name, :phone)
   end
+  
 end
