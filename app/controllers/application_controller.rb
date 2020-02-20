@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
         if logged_in?
             redirect_to clerk_orders_path(current_clerk)
         end
+        render "application/hello", :layout => false  
+
     end
 
     def logged_in?

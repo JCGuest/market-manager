@@ -1,18 +1,19 @@
-<br><br>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; background-color: white; margin:0 auto; width:90%;">
-    <h2 align="center">Edit Patron <%= @patron.id %></h2>
+<div class="top">
+    <h2>Edit Patron <%= @patron.id %></h2>
 </div> 
 
 <br>
 <br>
 <h3>
     <small class='text-muted'>
+    <p>
     <% if !@patron.errors.full_messages.blank?  %>
     <% @patron.errors.full_messages.each do |message| %>
     <%= message %>
     <br>
     <% end %>
     <%end %>
+    </p>
 </h3>
 
 <div style="width:50%; margin:0 auto;">

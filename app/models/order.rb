@@ -8,7 +8,16 @@ class Order < ApplicationRecord
     validates :amount, presence: true 
     validates :complete, inclusion: { in: [true, false],
     message: "status must be either *true or *false." }
+    
     scope :due, ->(time) { where("pick_up = ?", time) }
+
+    def complete?
+      if self.complete
+        return "yes"
+      else !self.complete
+        return "no"
+      end
+    end
 
     validate :pick_up_is_future_date
     def pick_up_is_future_date

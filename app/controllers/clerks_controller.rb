@@ -2,6 +2,7 @@ class ClerksController < ApplicationController
 
 def new 
     @clerk = Clerk.new
+    render "clerks/new", :layout => false
 end
 
 def create
@@ -11,7 +12,7 @@ def create
         redirect_to clerk_orders_path(@clerk)
     else
         @clerk.valid?
-        render :new
+        render "clerks/new", :layout => false
     end
 end
 

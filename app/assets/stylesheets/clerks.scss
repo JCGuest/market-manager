@@ -15,3 +15,49 @@ div.field_with_errors input[type="date"]{
 div.header-row h2{
     text-emphasis: muted;
 }
+
+div.banner{
+    width: 69.85%;
+    margin: 0 auto;
+    background-color: rgb(13, 150, 13);
+    height: 65px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-emphasis-color: white;
+}
+
+div.banner p{
+    color: white;
+}
+
+body.all{
+    background-color: lightgrey;
+}
+
+body.all a{
+    color:rgb(13, 150, 13);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div.top{
+    padding: 0px; 
+    overflow:hidden; 
+    height:70px; 
+    background-color: white; 
+    margin: 0 auto; margin:0 auto; 
+    width:69.85%;
+}
+
+div.top h2{
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+small.text-muted p{
+    color: red;
+}

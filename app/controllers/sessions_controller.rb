@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     @clerk = Clerk.new
+    render "sessions/new", :layout => false
   end
 
   def create
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
         redirect_to clerk_orders_path(clerk)
         else
           flash[:message] = "Something went wrong."
-          render :new
+          render "sessions/new", :layout => false
         end
       end
     else
@@ -28,9 +29,8 @@ class SessionsController < ApplicationController
       else 
         @clerk = Clerk.new(clerk_params)
         @clerk.valid?
-        # raise params.inspect
         flash[:message] = "Email or Password invalid."
-        render :new
+        render "sessions/new", :layout => false
       end
     end
   end

@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
         end
     
         def new
+            flash[:message] = nil
             @order = @clerk.orders.build
         end
     
@@ -25,6 +26,7 @@ class OrdersController < ApplicationController
         end
     
         def edit
+            flash[:message] = nil
             redirect_if_not_logged_in
             @order = @clerk.orders.find(params[:id])
         end   

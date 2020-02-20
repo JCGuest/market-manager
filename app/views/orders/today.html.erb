@@ -1,6 +1,5 @@
-<br><br>
-<div class="header-row" id="header-row" style="padding: 0px; overflow:hidden; height:72px; background-color: white; margin:0 auto; width:70%;">
-    <h2 align="center">Your orders for <%=Date.today.strftime("%m/%d/%Y")%></h2>
+<div class="top">
+    <h2>Your orders for <%=Date.today.strftime("%m/%d/%Y")%></h2>
 </div> 
 <small class="text-muted">  
 <table style="width:70%; background-color:white"  align="center" class="table table-bordered">
@@ -24,8 +23,8 @@
             <td><%=o.patron.name%></td>
             <td><%=o.item%></td>
             <td><%=o.amount%></td>
-            <td><%=o.pick_up%></td>
-            <td><%=o.complete%></td>
+            <td><%=o.pick_up.strftime("%m/%d/%Y")%></td>
+            <td><%=o.complete?%></td>
 
         </tr>
         <%end%>

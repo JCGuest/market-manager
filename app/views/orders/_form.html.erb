@@ -1,9 +1,8 @@
-
 <div style="width: 70%; margin:0 auto;">
 <%= form_for(order, url: url) do |f| %>
 <%= f.fields_for patron, Patron.new do |ff| %>
 
-<table style="background-color: white; width:70%"  class="table table-bordered">
+<table style="background-color: white; width:70%; margin: 0 auto;"  class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">Patron Name</th>
@@ -31,6 +30,7 @@
             </tr>
         </tbody>
 </table>   
+<br>
                 <%= f.submit "Submit"%>
                 <% end %>   
                 <%end %>
@@ -43,4 +43,4 @@
                     <%= link_to "Back To Orders", clerk_orders_path(@clerk) %>
                 </h4>  
             </button>
-      </div>
+        </div>
