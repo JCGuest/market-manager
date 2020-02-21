@@ -17,10 +17,9 @@
     </p>
 </div>
 </h3>
-
+<%= form_for(@patron, url: update_patron_url(@patron)) do |f| %>
 <div style="width:50%; margin:0 auto;">
 <table style="background-color: white"  align="center" class="table table-bordered">
-    <%= form_for(@patron, url: update_patron_url(@patron)) do |f| %>
     <thead>
         <tr>
             <th scope="col">Name</th>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/sessions', to: 'sessions#new'
   get 'clerks', to: 'clerks#new'
   # root 'application#hello'
-root 'sessions#new'
+  root 'sessions#new'
   resources :patrons, only: [:show, :edit, :update, :destroy] do
     resources :orders, only:[:show]
   end
@@ -20,7 +20,7 @@ root 'sessions#new'
   post '/clerks/:clerk_id/orders/:id/update', to: 'orders#update'
   get '/clerks/:clerk_id/orders/:id/update', to: "orders#edit"
   patch '/patrons/:id/update', to: 'patrons#update', as: 'update_patron'
-  # post '/patrons/:patron_id/update', to: 'patrons#update'
+  post '/patrons/:patron_id/update', to: 'patrons#update'
   get '/patron/:patron_id/delete', to: 'patrons#destroy', as: 'delete_patron'
   get '/clerks/:clerk_id/today', to: 'orders#today', as: 'clerk_orders_today'
 end
