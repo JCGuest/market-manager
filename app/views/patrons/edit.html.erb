@@ -8,8 +8,8 @@
 <div style="width: 70%; margin: 0 auto;" >
     <small class='text-muted' >
     <p>
-    <% if @patron_valid && !@patron_valid.errors.full_messages.blank?  %>
-    <% @patron_valid.errors.full_messages.each do |message| %>
+    <% if !@patron.errors.full_messages.empty?  %>
+    <% @patron.errors.full_messages.each do |message| %>
     <%= message %>
     <br>
     <% end %>

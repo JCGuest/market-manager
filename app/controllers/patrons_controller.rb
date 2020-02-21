@@ -7,23 +7,15 @@ class PatronsController < ApplicationController
   end
 
   def edit
-    if params[:id] !=nil
-      @patron = Patron.find(params[:id])
-    else
-      @patron = @patron_valid
-    end
-
+    @patron = Patron.find(params[:id])
   end
 
   def update
-    @patron = Patron.find(params[:patron_id])
-    update = Patron.new(patron_params)
-      if update.valid?
-          @patron.update(patron_params)
+    @patron = Patron.find(params[:id])
+      if @patron.update(patron_params)
           redirect_to patron_path(@patron)
       else
-        @patron_valid = Patron.new(patron_params)
-        @patron_valid.valid?  
+        @patron.valid?
           render :edit
       end
   end
