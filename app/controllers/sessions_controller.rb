@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
         redirect_to clerk_orders_path(clerk)
         else
           flash[:message] = "Something went wrong."
+          @clerk = Clerk.new
           render "sessions/new", :layout => false
         end
       end
@@ -30,6 +31,7 @@ class SessionsController < ApplicationController
         @clerk = Clerk.new(clerk_params)
         @clerk.valid?
         flash[:message] = "Email or Password invalid."
+        @clerk = Clerk.new
         render "sessions/new", :layout => false
       end
     end

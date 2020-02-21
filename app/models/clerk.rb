@@ -9,5 +9,5 @@ class Clerk < ApplicationRecord
     validates :title, presence: true, inclusion: { in: %w(manager cutter member),
     message: "%{value} is not a valid option" }, allow_nil: true
 
-    validates :password, presence: true, confirmation: true, length: { in: 6..20 }
+    validates :password, presence: true, confirmation: true, length: { in: 6..100 }
 end

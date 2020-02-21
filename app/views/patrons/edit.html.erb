@@ -5,15 +5,17 @@
 
 
 <h3>
-    <small class='text-muted'>
+<div style="width: 70%; margin: 0 auto;" >
+    <small class='text-muted' >
     <p>
-    <% if !@patron.errors.full_messages.blank?  %>
-    <% @patron.errors.full_messages.each do |message| %>
+    <% if @patron_valid && !@patron_valid.errors.full_messages.blank?  %>
+    <% @patron_valid.errors.full_messages.each do |message| %>
     <%= message %>
     <br>
     <% end %>
     <%end %>
     </p>
+</div>
 </h3>
 
 <div style="width:50%; margin:0 auto;">
