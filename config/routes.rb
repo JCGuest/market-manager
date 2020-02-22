@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   post '/patrons/:patron_id/update', to: 'patrons#update'
   get '/patron/:patron_id/delete', to: 'patrons#destroy', as: 'delete_patron'
   get '/clerks/:clerk_id/today', to: 'orders#today', as: 'clerk_orders_today'
+  get '/patrons/:id/update', to: 'patrons#edit'
 end
