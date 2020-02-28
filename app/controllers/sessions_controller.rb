@@ -9,7 +9,8 @@ before_action :set_clerk
     if auth_hash = request.env["omniauth.auth"]
       oauth_email = request.env["omniauth.auth"]["info"]["email"]
       if clerk = Clerk.find_by(email: oauth_email)
-        login_redirect_to_clerk_orders(clerk)
+        session[:clerk_id] = clerk.id
+        redirect_to clerk_orders_path(clerk)
       else
         clerk = Clerk.new(email: oauth_email, password: SecureRandom.hex)
         if clerk.save 
