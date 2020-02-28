@@ -2,6 +2,7 @@ class Order < ApplicationRecord
     belongs_to :clerk
     belongs_to :patron
     accepts_nested_attributes_for :patron
+    validates_associated :patron
 
     validates :item, presence: true
     validates :pick_up, presence: true

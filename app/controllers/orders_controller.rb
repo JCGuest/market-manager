@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
         end
     
         def new
+            redirect_if_not_logged_in
             flash[:message] = nil
             @order = @clerk.orders.build
         end

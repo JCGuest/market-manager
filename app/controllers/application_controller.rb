@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
 
     def hello
-        if logged_in?
-            redirect_to clerk_orders_path(current_clerk)
-        end
         render "application/hello", :layout => false  
-
     end
 
     def logged_in?
@@ -26,6 +22,6 @@ class ApplicationController < ActionController::Base
         if !logged_in?
           redirect_to login_path
         end
-      end
+    end
 
 end

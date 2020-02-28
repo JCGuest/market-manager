@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+before_action :set_clerk
   def new
     @clerk = Clerk.new
     render "sessions/new", :layout => false
@@ -9,13 +9,12 @@ class SessionsController < ApplicationController
     if auth_hash = request.env["omniauth.auth"]
       oauth_email = request.env["omniauth.auth"]["info"]["email"]
       if clerk = Clerk.find_by(email: oauth_email)
-        session[:clerk_id] = clerk.id
-        redirect_to clerk_orders_path(clerk)
+        login_redirect_to_clerk_orders(clerk)
       else
         clerk = Clerk.new(email: oauth_email, password: SecureRandom.hex)
         if clerk.save 
-        session[:clerk_id] = clerk.id
-        redirect_to clerk_orders_path(clerk)
+          session[:clerk_id] = clerk.id
+          redirect_to clerk_orders_path(clerk)
         else
           flash[:message] = "Something went wrong."
           @clerk = Clerk.new
@@ -23,8 +22,8 @@ class SessionsController < ApplicationController
         end
       end
     else
-      @clerk = Clerk.find_by(email: params[:email])
-      if @clerk && @clerk.authenticate(params[:password])
+      @clerk = Clerk.find_by(email: clerk_params[:email])
+      if @clerk && @clerk.authenticate(clerk_params[:password])
         session[:clerk_id] = @clerk.id
         redirect_to clerk_orders_path(@clerk)
       else 

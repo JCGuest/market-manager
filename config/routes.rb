@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/sessions', to: 'sessions#new'
   get 'clerks', to: 'clerks#new'
-  # root 'application#hello'
-  root 'sessions#new'
+  root 'application#hello'
+  # root 'sessions#new'
+  
   resources :patrons, only: [:show, :edit, :update, :destroy] do
     resources :orders, only:[:show]
   end
