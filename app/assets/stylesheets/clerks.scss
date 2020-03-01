@@ -26,10 +26,12 @@ div.banner{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     text-emphasis-color: white;
+    box-shadow: 2px 5px 5px #333;
 }
 
 div.banner p{
     color: white;
+    
 }
 
 body.all{
@@ -49,6 +51,8 @@ div.top{
     background-color: white; 
     margin: 0 auto; margin:0 auto; 
     width:69.85%;
+    box-shadow: 2px 5px 5px #333;
+    
 }
 
 div.top h2{
@@ -60,4 +64,11 @@ div.top h2{
 
 small.text-muted p{
     color: red;
+}
+
+table.table {
+    box-shadow: 2px 5px 5px #333;
+    width:70%;
+    background-color:white;
+    margin: 0 auto;
 }

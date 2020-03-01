@@ -2,7 +2,7 @@
 <%= form_for(order, url: url) do |f| %>
 <%= f.fields_for patron, Patron.new do |ff| %>
 
-<table style="background-color: white; width:70%; margin: 0 auto;"  class="table table-bordered">
+<table  class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">Patron Name</th>
