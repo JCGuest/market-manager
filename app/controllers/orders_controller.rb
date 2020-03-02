@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
     
         def index
             redirect_if_not_logged_in  
-            @orders = @clerk.orders.all
+            @orders = @clerk.orders.all.page(params[:page]).per(3)
+            # raise params.inspect
         end
     
         def new

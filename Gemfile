@@ -8,6 +8,7 @@ gem "omniauth", "~> 1.9"
 gem "dotenv-rails", "~> 2.7"
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'kaminari'
 
 
 
