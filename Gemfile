@@ -6,7 +6,7 @@ ruby '2.6.1'
 gem "omniauth-github", "~> 1.3"
 gem "omniauth", "~> 1.9"
 gem "dotenv-rails", "~> 2.7"
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'autoprefixer-rails'
 gem 'kaminari'
 
