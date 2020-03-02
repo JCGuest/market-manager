@@ -51,7 +51,7 @@ div.top{
     background-color: white; 
     margin: 0 auto; margin:0 auto; 
     width:69.85%;
-    box-shadow: 2px 5px 5px #333;
+    box-shadow: 3px 7px 7px #333;
     
 }
 
@@ -67,8 +67,12 @@ small.text-muted p{
 }
 
 table.table {
-    box-shadow: 2px 5px 5px #333;
-    width:70%;
+    box-shadow: 3px 7px 7px #333;
+    width:69.85%;
     background-color:white;
     margin: 0 auto;
+}
+
+button.btn {
+    box-shadow: 3px 7px 7px #333;
 }
